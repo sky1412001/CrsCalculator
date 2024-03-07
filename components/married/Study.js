@@ -67,7 +67,6 @@ const Study= ({navigation}) =>{
             alignItems: 'center',
             justifyContent: 'center',
             marginTop:10
-            
           }}>
           <Text style={{fontSize: 30, color: 'black',}}>{points}</Text>
         </View>

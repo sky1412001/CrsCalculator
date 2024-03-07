@@ -28,7 +28,7 @@ const pointsReducer = (state = initialState, action) => {
         selectedOption: action.payload,
       };
     case REFRESH_STATE:
-      return initialState; // Reset state to initial values
+      return initialState;
     default:
       return state;
   }

@@ -94,8 +94,7 @@ const Ages = () =>{
             }}>
             <Text style={{fontSize: 30}}>
               {points}
-            </Text>
-           
+            </Text>      
         </View>
           </ImageBackground>
         <View
@@ -106,7 +105,6 @@ const Ages = () =>{
             justifyContent: 'center',
             marginTop: 100,
             margin:20,
-        
           }}>
           <Picker
              style={{width:343, height:40, backgroundColor: '#BA181B', color: 'white', fontSize: 20, fontWeight:'700', borderRadius:20 }}
@@ -138,8 +136,6 @@ const Ages = () =>{
             <Picker.Item label="45" value="45" />
           </Picker>
         </View>
-        
-        
       </View>
 
     )

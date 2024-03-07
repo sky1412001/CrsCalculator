@@ -94,7 +94,6 @@ const Cblf = ({navigation}) => {
           </Text>
         </View>
       </ImageBackground>
-
       <View
         style={{
           borderRadius: 20,
@@ -130,7 +129,6 @@ const Cblf = ({navigation}) => {
         </Picker>
       </View>
       <View style={{flexDirection:'row', justifyContent:'space-around'}}>
-
       <TouchableOpacity
         onPress={() =>navigation.goBack()}>
         <View
@@ -188,11 +186,7 @@ const Cblf = ({navigation}) => {
     </SafeAreaView>
   );
 };
-
 export default Cblf;
-
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

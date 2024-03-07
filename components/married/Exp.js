@@ -4,37 +4,23 @@ import {Picker} from '@react-native-picker/picker';
 import {useSelector, useDispatch} from 'react-redux';
 import {addPoints, refreshState} from './../../actions/pointsActions';
 const refresh = require('../../assets/rets.png');
-const Exp = () => {
+const Exp = ({navigation}) => {
   const [pickerValue, setPickerValue] = useState('');
-  const [selectedValue, setSelectedValue] = useState('')
   const points = useSelector(state => state.points.points);
   const dispatch = useDispatch();
 
-  const Speaking = [
-    { label: 'Select...', value: 'Value 1' },
-    { label: '10-12', value: 'Value 2' },
-    { label: '9', value: 'Value 3' },
-    { label: '8', value: 'Value 4' },
-    { label: '7', value: 'Value 5' },
-    { label: '6', value: 'Value 6' },
-    { label: '5', value: 'Value 7' },
-    { label: '4', value: 'Value 8' },
-    { label: '3', value: 'Value 9' },
-  ]
 
   const handleAddPoints = itemValue => {
-    if (itemValue === '17') {
+    if (itemValue === '0') {
       dispatch(addPoints(0));
-    } else if (itemValue === '18') {
-      dispatch(addPoints(35));
-    } else if (itemValue === '19') {
-      dispatch(addPoints(46));
-    } else if (itemValue === '20') {
-      dispatch(addPoints(56));
-    } else if (itemValue === '30') {
-      dispatch(addPoints(63));
-    } else if (itemValue === '31') {
-      dispatch(addPoints(70));
+    } else if (itemValue === '1') {
+      navigation.navigate('Celpip')
+    } else if (itemValue === '2') {
+      navigation.navigate('Ielts')
+    } else if (itemValue === '3') {
+      navigation.navigate('Tef')
+    } else if (itemValue === '4') {
+      navigation.navigate('Tcf')
     } 
   }
   const handleAddPoint = () => {
@@ -119,33 +105,16 @@ const Exp = () => {
         handleAddPoints(itemValue);
           }}
          >
-          <Picker.Item label="Select" value="1"/>
-          <Picker.Item label="CELPIP-G" value="2"/>
-          <Picker.Item label="IELTS" value="3" />
-          <Picker.Item label="TEF Canada" value="4" />
-          <Picker.Item label="TCF Canada" value="5" />
+          <Picker.Item label="Select" value="0"/>
+          <Picker.Item label="CELPIP-G" value="1"/>
+          <Picker.Item label="IELTS" value="2"/>
+          <Picker.Item label="TEF Canada" value="3" />
+          <Picker.Item label="TCF Canada" value="4" />
         </Picker>
         </View>
 
-        <Text>Speaking</Text>
-        <Picker
-        padding={20}
-        dropdownIconColor="red"
-        style={{flex:1,width:200,height:40, 
-        color: 'black', fontSize: 20,backgroundColor:'white', borderRadius:10}}
-        selectedValue={pickerValue}
-        onValueChange={(itemValue, itemIndex)=>{
-        setPickerValue(itemValue);
-        handleAddPoints(itemValue);
-          }}
-         >
-          {
-            Speaking.map((item, index)=>
-            <Picker.Item label={item.label} value={item.label}  key={index}/>
-            )
-          }
-         
-        </Picker>
+        
+       
     </SafeAreaView>
   );
 };

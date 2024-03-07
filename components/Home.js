@@ -17,7 +17,7 @@ const canada = require('../assets/can.jpg')
                     <Text style={{color:'white', fontFamily:'Raleway-ExtraBold'}}>Married</Text>
                 </View>
                 </TouchableOpacity> 
-               <TouchableOpacity onPress={()=>navigation.navigate('Ages')}>
+               <TouchableOpacity onPress={()=>navigation.navigate('Sub')}>
                <View style={styles.btn}>
                     <Text style={{color:'white', fontFamily:'Raleway-ExtraBold'}}>Single</Text>
                 </View>

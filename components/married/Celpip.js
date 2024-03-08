@@ -13,6 +13,7 @@ const Celpip = ({navigation}) =>{
   const points = useSelector(state => state.points.points);
   const dispatch = useDispatch();
 
+  
   const handleAddPoints = itemValue => {
     if (itemValue === '0') {
       dispatch(addPoints(0));
@@ -183,7 +184,7 @@ const Celpip = ({navigation}) =>{
           <Picker.Item label="6" value="5r" />
           <Picker.Item label="5" value="6r" />
           <Picker.Item label="4" value="7r" />
-          <Picker.Item label="m, 0-3" value="8r" />
+          <Picker.Item label="m, 0-3" value="8r"/>
         </Picker>
       </View>
 <View  style={{

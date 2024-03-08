@@ -47,24 +47,24 @@ const Age = ({navigation}) => {
   const singlePoints = [
     {label: 'Select your age', value: ''},
     {label: '0-17', value: '17s', points: 0},
-    {label: '18', value: '18s', points: 90},
-    {label: '19', value: '19s', points: 95},
-    {label: '20-29', value: '20s', points: 150},
-    {label: '30', value: '30s', points: 95},
-    {label: '31', value: '31s', points: 90},
-    {label: '32', value: '32s', points: 85},
-    {label: '33', value: '33s', points: 80},
-    {label: '34', value: '34s', points: 75},
-    {label: '35', value: '35s', points: 70},
-    {label: '36', value: '36s', points: 65},
-    {label: '37', value: '37s', points: 60},
-    {label: '38', value: '38s', points: 55},
-    {label: '39', value: '39s', points: 50},
-    {label: '40', value: '40s', poinst: 45},
-    {label: '41', value: '41s', points: 40},
-    {label: '42', value: '42s', points: 42},
-    {label: '43', value: '43s', points: 43},
-    {label: '44', value: '44s', points: 44},
+    {label: '18', value: '18s', points: 99},
+    {label: '19', value: '19s', points: 105},
+    {label: '20-29', value: '20s', points: 110},
+    {label: '30', value: '30s', points: 105},
+    {label: '31', value: '31s', points: 99},
+    {label: '32', value: '32s', points: 94},
+    {label: '33', value: '33s', points: 88},
+    {label: '34', value: '34s', points: 83},
+    {label: '35', value: '35s', points: 77},
+    {label: '36', value: '36s', points: 72},
+    {label: '37', value: '37s', points: 66},
+    {label: '38', value: '38s', points: 61},
+    {label: '39', value: '39s', points: 55},
+    {label: '40', value: '40s', poinst: 50},
+    {label: '41', value: '41s', points: 45},
+    {label: '42', value: '42s', points: 35},
+    {label: '43', value: '43s', points: 25},
+    {label: '44', value: '44s', points: 15},
     {label: '45', value: '45s', points: 0},
   ];
 
@@ -203,7 +203,7 @@ const Age = ({navigation}) => {
       {/* Next button */}
       <TouchableOpacity
         disabled={pickerValue === ''}
-        onPress={() => navigation.navigate('Study')}>
+        onPress={() => navigation.navigate('Study', {maritalStatus : maritalStatus})}>
         <View
           style={{
             backgroundColor: 'red',

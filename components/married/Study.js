@@ -31,11 +31,12 @@ const pickerItems = [
   { label: "Doctoral level university degree (Ph.D.)", value: "33" }
 ];
 
-const Study = ({ navigation }) => {
+const Study = ({ navigation, route }) => {
+  const maritalStatus  = route.param;
   const [pickerValue, setPickerValue] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
 
-  const pointsMap = {
+  const marriedPoints = {
     "17": 0,
     "18": 28,
     "19": 84,
@@ -45,7 +46,18 @@ const Study = ({ navigation }) => {
     "32": 126,
     "33": 140
   };
+  const singlePoints = {
+    "17": 0,
+    "18": 30,
+    "19": 90,
+    "20": 98,
+    "30": 120,
+    "31": 128,
+    "32": 135,
+    "33": 150
+  }
 
+  const pointsMap = maritalStatus === 'single' ? singlePoints : marriedPoints;
   const points = useSelector((state) => state.points.points);
   const dispatch = useDispatch();
 
@@ -54,11 +66,9 @@ const Study = ({ navigation }) => {
       dispatch(addPoints(pointsMap[itemValue]));
     }
   };
-
   const handleAddPoint = () => {
     dispatch(refreshState());
   };
-
   return (
     <SafeAreaView style={{flex:1}}>
       <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>

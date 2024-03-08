@@ -15,12 +15,12 @@ import {addPoints, refreshState} from './../../actions/pointsActions';
 const refresh = require('../../assets/rets.png');
 
 const Age = ({navigation}) => {
-  const [maritalStatus, setMaritalStatus] = useState('');
   const [pickerValue, setPickerValue] = useState('');
   const points = useSelector(state => state.points.points);
   const dispatch = useDispatch();
 
-  const marriedPoints = [
+  // Array of objects representing age ranges and points
+  const ageRanges = [
     {label: 'Select your age', value: ''},
     {label: '0-17', value: '17', points: 0},
     {label: '18', value: '18', points: 90},
@@ -44,33 +44,8 @@ const Age = ({navigation}) => {
     {label: '45', value: '45', points: 0},
   ];
 
-  const singlePoints = [
-    {label: 'Select your age', value: ''},
-    {label: '0-17', value: '17s', points: 0},
-    {label: '18', value: '18s', points: 90},
-    {label: '19', value: '19s', points: 95},
-    {label: '20-29', value: '20s', points: 150},
-    {label: '30', value: '30s', points: 95},
-    {label: '31', value: '31s', points: 90},
-    {label: '32', value: '32s', points: 85},
-    {label: '33', value: '33s', points: 80},
-    {label: '34', value: '34s', points: 75},
-    {label: '35', value: '35s', points: 70},
-    {label: '36', value: '36s', points: 65},
-    {label: '37', value: '37s', points: 60},
-    {label: '38', value: '38s', points: 55},
-    {label: '39', value: '39s', points: 50},
-    {label: '40', value: '40s', poinst: 45},
-    {label: '41', value: '41s', points: 40},
-    {label: '42', value: '42s', points: 42},
-    {label: '43', value: '43s', points: 43},
-    {label: '44', value: '44s', points: 44},
-    {label: '45', value: '45s', points: 0},
-  ];
-
   const handleAddPoints = itemValue => {
-    const selectedPointsArray = maritalStatus === 'single' ? singlePoints : marriedPoints;
-    const selectedAge = selectedPointsArray.find(age => age.value === itemValue);
+    const selectedAge = ageRanges.find(age => age.value === itemValue);
     const pointsToAdd = selectedAge ? selectedAge.points : 0;
     dispatch(addPoints(pointsToAdd));
   };
@@ -81,7 +56,6 @@ const Age = ({navigation}) => {
 
   return (
     <View style={{flex: 1}}>
-      <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
       <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} />
       <ImageBackground
         source={require('../../assets/header.png')}
@@ -136,69 +110,31 @@ const Age = ({navigation}) => {
         </View>
       </ImageBackground>
 
-      <View  style={{
-          borderRadius: 20,
-          height: 60,
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: 100,
-          margin: 20,
-          backgroundColor:'white',
-          elevation:6,
-          borderWidth:2,
-          borderColor:'red'
-        }}>
-           <Picker
-            style={{ width: 340, height: 40, color: 'black', fontSize: 25, borderRadius: 20 }}
-            selectedValue={maritalStatus}
-            onValueChange={(itemValue, itemIndex) => {
-              setMaritalStatus(itemValue);
-            }}
-            dropdownIconColor="black"
-            placeholders>
-            <Picker.Item label="Select marital status" value="" />
-            <Picker.Item label="Single" value="single" />
-            <Picker.Item label="Married" value="married" />
-          </Picker>
-
-      </View>
-            <Text style={{ textAlign: 'center', fontSize: 18, fontFamily: 'Raleway-ExtraBold', color: 'red' }}>
-              Select your age
-            </Text>
-          {maritalStatus && (
-          <View  style={{
+      {/* Points and age selection */}
+      <View>
+        {/* Points display */}
+        {/* Age selection */}
+        <Picker
+          style={{
+            width: 340,
+            height: 40,
+            color: 'black',
+            fontSize: 25,
             borderRadius: 20,
-            height: 60,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 10,
-            margin: 20,
-            backgroundColor:'white',
-            elevation:6,
-            borderWidth:2,
-            borderColor:'red'
-          }}>
-            <Picker
-              style={{ width: 340, height: 40, color: 'black', fontSize: 25, borderRadius: 20 }}
-              selectedValue={pickerValue}
-              onValueChange={(itemValue) => {
-                setPickerValue(itemValue);
-                handleAddPoints(itemValue)
-              }}
-              dropdownIconColor="black"
-              placeholders>
-              {maritalStatus === 'single' ? (
-                singlePoints.map((item, index) => (
-                  <Picker.Item key={index} label={item.label} value={item.value} />
-                ))
-              ) : (
-                marriedPoints.map((item, index) => (
-                  <Picker.Item key={index} label={item.label} value={item.value} />
-                ))
-              )}
-            </Picker>
-          </View>
-        )}
+          }}
+          selectedValue={pickerValue}
+          onValueChange={(itemValue, itemIndex) => {
+            setPickerValue(itemValue);
+            handleAddPoints(itemValue);
+          }}
+          dropdownIconColor="black"
+          placeholders>
+          {/* Render Picker items */}
+          {ageRanges.map((age, index) => (
+            <Picker.Item key={index} label={age.label} value={age.value} />
+          ))}
+        </Picker>
+      </View>
 
       {/* Next button */}
       <TouchableOpacity
@@ -229,22 +165,10 @@ const Age = ({navigation}) => {
           padding: 20,
           borderRadius: 10,
         }}>
-        <Text style={{padding:10, fontWeight:"700", color:'black'}}>
-       <Text>
-       Choose the best answer:
-        </Text>
-
-If you’ve been invited to apply, enter your age on the date you were invited.
-OR
-If you plan to complete an Express Entry profile, enter your current age.
-
-If you’ve been invited to apply, enter your age on the date you were invited.
-OR
-If you plan to complete an Express Entry profile, enter your current age.
-        </Text>
+        {/* Additional information text */}
       </View>
-      </ImageBackground>
     </View>
   );
 };
+
 export default Age;

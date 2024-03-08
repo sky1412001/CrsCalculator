@@ -40,7 +40,8 @@ const Cblf = ({navigation}) => {
     dispatch(refreshState());
   };
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
+      <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
       <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} />
       <ImageBackground
         source={require('../../assets/header.png')}
@@ -183,6 +184,7 @@ const Cblf = ({navigation}) => {
           </View>
         </View>
       </Modal>
+      </ImageBackground>
     </SafeAreaView>
   );
 };

@@ -33,7 +33,8 @@ const Celpip = ({navigation}) =>{
   };
 
     return(
-        <SafeAreaView>
+        <SafeAreaView style={{flex:1}}>
+          <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
              <ImageBackground
         source={require('../../assets/header.png')}
         style={{height: 140, elevation: 10}}>
@@ -116,7 +117,7 @@ const Celpip = ({navigation}) =>{
           <Picker.Item label="6" value="6" />
           <Picker.Item label="5" value="5" />
           <Picker.Item label="4" value="4" />
-          <Picker.Item label="m, 0-3" value="3" />
+          <Picker.Item label="m, 0-3" value="3"/>
         </Picker>
       </View>
       <View  style={{
@@ -224,7 +225,7 @@ const Celpip = ({navigation}) =>{
      </TouchableOpacity>
 
 
-
+</ImageBackground>
         </SafeAreaView>
     
 

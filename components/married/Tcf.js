@@ -23,7 +23,8 @@ const Tcf = ({navigation}) =>{
   };
 
     return(
-        <SafeAreaView>
+        <SafeAreaView style={{flex:1}}>
+          <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
              <ImageBackground
         source={require('../../assets/header.png')}
         style={{height: 140, elevation: 10}}>
@@ -211,6 +212,7 @@ const Tcf = ({navigation}) =>{
 
       <View style={{width:80, backgroundColor:'red', padding:10, alignSelf:'center', borderRadius:10}}><Text style={{color:'white',textAlign:'center'}}>Next</Text></View>
       </TouchableOpacity>
+    </ImageBackground>
         </SafeAreaView>
     )
 }

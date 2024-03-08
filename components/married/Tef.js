@@ -31,9 +31,9 @@ const Tef = ({navigation}) =>{
   const handleAddPoint = () => {
     dispatch(refreshState());
   };
-
     return(
-        <SafeAreaView>
+        <SafeAreaView style={{flex:1}}>
+          <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
              <ImageBackground
         source={require('../../assets/header.png')}
         style={{height: 140, elevation: 10}}>
@@ -219,11 +219,10 @@ const Tef = ({navigation}) =>{
         </Picker>
       </View>
       <TouchableOpacity onPress={()=>navigation.navigate('Second')}>
-
       <View style={{width:80, backgroundColor:'red', padding:10, alignSelf:'center', borderRadius:10}}><Text style={{color:'white',textAlign:'center'}}>Next</Text></View>
       </TouchableOpacity>
 
-
+</ImageBackground>
         </SafeAreaView>
     
 

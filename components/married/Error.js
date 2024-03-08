@@ -4,7 +4,7 @@ import { View , Text, StatusBar} from "react-native";
 
 const Error = () =>{
     return(
-     
+        <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
         <View style={{ alignItems:"center", justifyContent:"center"}}>
             <StatusBar backgroundColor={'red'}/>
             <View  style={{backgroundColor:'red', opacity:0.5,alignContent:'center', marginVertical:250, padding:20, elevation:10, borderRadius:15, margin:10}}>
@@ -13,6 +13,7 @@ const Error = () =>{
         To submit an Express Entry profile, you must prove your language skills by taking an approved language test. Find out more about language testing for Express Entry.</Text>
         </View>
             </View>
+            </ImageBackground>
     )
   }
   export default Error;

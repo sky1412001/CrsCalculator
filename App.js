@@ -7,7 +7,7 @@ import { store, persistor } from './store/store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './components/Home';
-import { Age, Cblf , Study, Work , Error, Exp, Celpip, Ielts,Tef, Tcf, Second,} from './components/married';
+import { Age, Cblf , Study, Error, Exp, Celpip, Ielts,Tef, Tcf, Second, Work} from './components/married';
 import { Sub } from './components/single';
 
 const App = () => {
@@ -21,7 +21,6 @@ const App = () => {
         <Stack.Screen name="Age" component={Age}/>
         <Stack.Screen name='Study' component={Study}/>
         <Stack.Screen name='Cblf' component={Cblf} />
-        <Stack.Screen name='Work' component={Work}/>
         <Stack.Screen name='Error' component={Error} />
         <Stack.Screen name='Exp' component={Exp}/>
         <Stack.Screen name='Celpip' component={Celpip}/>
@@ -30,6 +29,7 @@ const App = () => {
         <Stack.Screen name='Tcf' component={Tcf} />
         <Stack.Screen name='Sub' component={Sub} />
         <Stack.Screen name='Second' component={Second}/>
+        <Stack.Screen name='Work' component={Work}/>
        </Stack.Navigator>
     </NavigationContainer>
       </PersistGate>

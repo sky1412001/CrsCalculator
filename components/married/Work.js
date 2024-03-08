@@ -1,67 +1,258 @@
 import React,{useState} from "react";
-import {Image, SafeAreaView, ScrollView, Text, TouchableOpacity, View,Pressable, StatusBar} from 'react-native';
+import {Image,Modal, SafeAreaView, ScrollView, Text, TouchableOpacity, View,Pressable, StatusBar, StyleSheet, ImageBackground} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import {addPoints, refreshState} from './../../actions/pointsActions';
 import {Picker} from '@react-native-picker/picker';
 
-const refresh = require('../assets/rets.png')
+const refresh = require('../../assets/rets.png')
 const Work =({navigation}) => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [showModal, setSetShowModal] = useState(false);
+  const [showme, setShowMe] = useState(false)
    const [pickerValue, setPickerValue] = useState('');
 
     const points = useSelector((state) => state.points.points);
     const dispatch = useDispatch();
   
       const handleAddPoints=itemValue =>{
-         if (itemValue === '17') {
-            dispatch(addPoints(0));
-          } else if (itemValue === '18') {
-            dispatch(addPoints(6));
-          } else if (itemValue === '19') {
-            dispatch(addPoints(8));
-          } else if (itemValue === '20') {
-            dispatch(addPoints(16));
-          } else if (itemValue === '30') {
-            dispatch(addPoints(22));
-          } else if (itemValue === '31') {
-            dispatch(addPoints(29));
-          } else if (itemValue === '32') {
-            dispatch(addPoints(32));
-          } 
+         
       }
       const handleAddPoint=()=>{
          dispatch(refreshState())
       }
     return(
-        <SafeAreaView>
+        <SafeAreaView style={{flex:1}}>
+          <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
+          <ImageBackground
+        source={require('../../assets/header.png')}
+        style={styles.headerContainer}>
+        <View style={styles.headerContent}>
+          <Text style={styles.headerText}>CRS – A. Core</Text>
+          <Pressable onPress={handleAddPoint}>
+            <Image source={refresh} style={styles.refreshIcon} />
+          </Pressable>
+        </View>
+        <View style={styles.pointsContainer}>
+          <Text style={styles.pointsText}>{points}</Text>
+        </View>
+        <View style={styles.languageContainer}>
+          <Text style={styles.languageText}>
+          In The Last 10 Years, How Many Total Years Of Foreign Skilled Work Experience Do You Have?
+          </Text>
+        </View>
+      </ImageBackground>
         <View
         style={{
-          borderRadius: 10,
-          margin: 10,
+          borderRadius: 20,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop:10,
+          marginTop: 150,
+          margin: 20,
+          backgroundColor: 'white',
+          elevation: 6,
+          borderWidth: 2,
+          borderColor: 'red',
+        
         }}>
         <Picker
-           style={{width:343, height:40,    backgroundColor: '#BA181B',
-           color: 'white', fontSize: 20, fontFamily:'Poppins-Regular' }}
+           style={{width:343, height:40,
+           color: 'black', fontSize: 20, fontFamily:'Poppins-Regular'}}
           selectedValue={pickerValue}
           onValueChange={(itemValue, itemIndex) => {
             setPickerValue(itemValue);
             handleAddPoints(itemValue);
           }}
-        dropdownIconColor="white" >
-          <Picker.Item label="Canadian Language Benchmark " value="" />
-          <Picker.Item label="Less than CLB 4" value="17" />
-          <Picker.Item label="CLB 4 or 5" value="18" />
-          <Picker.Item label="CLB 6" value="19" />
-          <Picker.Item label="CLB 7" value="20" />
-          <Picker.Item label="CLB 8" value="30" />
-          <Picker.Item label="CLB 9" value="31" />
-          <Picker.Item label="CLB 10 or more" value="32" />
+        dropdownIconColor="red" >
+          <Picker.Item label="Enter your work experience " value="" />
+          <Picker.Item label="None or less than a Year" value="17" />
+          <Picker.Item label="1 Year" value="18" />
+          <Picker.Item label="2 Years" value="19" />
+          <Picker.Item label="3 Year or more" value="20" />
         </Picker>
     </View>
+    <TouchableOpacity onPress={()=>setModalVisible(true)}>
+    <View style={{backgroundColor:'red', width:80, height:40, alignItems:'center', justifyContent:'center', borderRadius:10, alignSelf:'center'}}>
+      <Text style={{color:'white', textAlign:'center'}}>Next</Text>
+    </View>
+
+    </TouchableOpacity>
+    <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          setModalVisible(false);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}> Do You Have A Certificate Of Qualification From A Canadian Province, Territory Or Federal Body?</Text>
+            <View style={{ flexDirection: 'row', justifyContent: "space-between", gap: 40 }}>
+              <TouchableOpacity onPress={()=>setSetShowModal(true)}>
+
+                <View style={{ backgroundColor: 'red', width: 70, padding: 10, borderRadius: 10 }}>
+                  <Text style={{ textAlign: 'center', color: 'white' }}>NO</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>setSetShowModal(true)}>
+                <View style={{ backgroundColor: 'green', width: 70, padding: 10, borderRadius: 10 }}>
+                  <Text style={{ textAlign: 'center', color: 'white' }}>Yes</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+   
+      </Modal>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showModal}
+        onRequestClose={() => {
+          setSetShowModal(false);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Will Your Spouse Or Common-Law Partner Come With You To Canada?</Text>
+            <View style={{ flexDirection: 'row', justifyContent: "space-between", gap: 40 }}>
+              <TouchableOpacity onPress={()=>setShowMe(true)}>
+
+                <View style={{ backgroundColor: 'red', width: 70, padding: 10, borderRadius: 10 }}>
+                  <Text style={{ textAlign: 'center', color: 'white' }}>NO</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>setShowMe(true) || navigation.navigate()}>
+                <View style={{ backgroundColor: 'green', width: 70, padding: 10, borderRadius: 10 }}>
+                  <Text style={{ textAlign: 'center', color: 'white' }}>Yes</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+   
+      </Modal>
+
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={showme}
+        onRequestClose={() => {
+          setShowMe(false);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>Do You Or Your Spouse Or Common Law Partner (If They Will Come With You To Canada) Have At Least One Brother Or Sister Living In Canada Who Is A Citizen Or Permanent Resident?</Text>
+            <View style={{ flexDirection: 'row', justifyContent: "space-between", gap: 40 }}>
+              <TouchableOpacity>
+
+                <View style={{ backgroundColor: 'red', width: 70, padding: 10, borderRadius: 10 }}>
+                  <Text style={{ textAlign: 'center', color: 'white' }}>NO</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity>
+                <View style={{ backgroundColor: 'green', width: 70, padding: 10, borderRadius: 10 }}>
+                  <Text style={{ textAlign: 'center', color: 'white' }}>Yes</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+   
+      </Modal>
+      
+    </ImageBackground>
 </SafeAreaView>
     )
 }
 export default Work;
+const styles = StyleSheet.create({
+  headerContainer: {
+    height: 140,
+    elevation: 10,
+  },
+  headerContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 20,
+  },
+  headerText: {
+    fontFamily: 'Raleway-ExtraBold',
+    fontSize: 20,
+    color: 'white',
+  },
+  refreshIcon: {
+    width: 30,
+    height: 30,
+    marginTop: 10,
+  },
+  pointsContainer: {
+    width: 90,
+    height: 90,
+    backgroundColor: 'white',
+    borderRadius: 50,
+    alignSelf: 'center',
+    borderWidth: 2,
+    borderColor: 'red',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+  },
+  pointsText: {
+    fontSize: 30,
+    color: 'black',
+  },
+  languageContainer: {
+    marginVertical: 20,
+  },
+  languageText: {
+    textAlign: 'center',
+    fontSize: 18,
+    fontFamily: 'Raleway-ExtraBold',
+    color: 'red',
+    padding:10
+  },
+  pickerContainer: {
+    borderRadius: 20,
+    height: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 120,
+    margin: 20,
+    backgroundColor: 'white',
+    elevation: 6,
+    borderWidth: 2,
+    borderColor: 'red',
+    marginTop:40
+  },
+  picker: {
+    flex: 1,
+    width: 343,
+    height: 40,
+    color: 'black',
+    fontSize: 20,
+    marginTop:20
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 15,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    elevation: 5,
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+    color: 'black',
+    fontFamily: 'Raleway-Bold'
+  },
+});

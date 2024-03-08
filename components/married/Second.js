@@ -14,23 +14,24 @@ import {addPoints, refreshState} from './../../actions/pointsActions';
 import { Tcf } from '.';
 
 const refresh = require('../../assets/rets.png');
-const Second = () => {
+const Second = ({navigation}) => {
   const [pickerValue, setPickerValue] = useState('');
   const [showPicker, setShowPicker] = useState(false);
   const[listening, setListening] = useState('')
   const[speaking, setSpeaking] = useState('')
   const[reading, setReading] = useState('')
   const[writing, setWriting] = useState('')
+  const[secondPicker, setSecondPicker] = useState(false)
   const points = useSelector(state => state.points.points);
   const dispatch = useDispatch();
 
   const handleAddPoints = itemValue => {
     if (itemValue === '0') {
-      dispatch(addPoints(0));
+      navigation.navigate("Work")
     } else if (itemValue === 'tcf') {
       setShowPicker(true);
     } else if (itemValue === 'tef') {
-      dispatch(addPoints(46));
+      setSecondPicker(true)
     }
   };
   const handleAddPoint = () => {
@@ -38,7 +39,8 @@ const Second = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1}}>
+      <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
       <ImageBackground
         source={require('../../assets/header.png')}
         style={{height: 140, elevation: 10}}>
@@ -121,7 +123,8 @@ const Second = () => {
           }}>
           <Picker.Item label="Select" value="0" />
           <Picker.Item label="TCF-CANADA" value="tcf" />
-          <Picker.Item label="TEF-CANADA" value="2" />
+          <Picker.Item label="TEF-CANADA" value="tef" />
+          <Picker.Item label="Not applicable" value="0" />
         </Picker>
       </View>
       <View style={{flexDirection:"row", justifyContent:'space-evenly'}}>
@@ -217,11 +220,107 @@ const Second = () => {
                 }
             </View>
 
-            <TouchableOpacity>
+            <View style={{flexDirection:"row", justifyContent:'space-evenly'}}>
+      {secondPicker && pickerValue === 'tef'&& (
+
+            <Picker
+            style={{width:160, backgroundColor:'white'}}
+              selectedValue={speaking}
+              onValueChange={(itemValue, itemIndex) => {
+                setSpeaking(itemValue)
+                handleAddPoint(itemValue)
+              }}>
+             <Picker.Item label="Speaking" value="0"/>
+          <Picker.Item label="393-450" value="10-12"/>
+          <Picker.Item label="371-392" value="9"/>
+          <Picker.Item label="349-370" value="8" />
+          <Picker.Item label="310-348" value="7" />
+          <Picker.Item label="271-309" value="6" />
+          <Picker.Item label="226-270" value="5" />
+          <Picker.Item label="181-225" value="4" />
+          <Picker.Item label="0-180" value="3" />
+            </Picker>
+            
+          )}
+
+          {
+            secondPicker && pickerValue === 'tef'&& (
+             
+        
+                    <Picker
+                    style={{width:160, backgroundColor:'white'}}
+                      selectedValue={listening}
+                      onValueChange={(itemValue, itemIndex) => {
+                        setListening(itemValue)
+                        handleAddPoint(itemValue)
+                      }}>
+          <Picker.Item label="Listening" value="0l"/>
+          <Picker.Item label="393-450" value="10-12l"/>
+          <Picker.Item label="371-392" value="9l"/>
+          <Picker.Item label="349-370" value="8l" />
+          <Picker.Item label="310-348" value="7l" />
+          <Picker.Item label="271-309" value="6l" />
+          <Picker.Item label="226-270" value="5l" />
+          <Picker.Item label="181-225" value="4l" />
+          <Picker.Item label="0-180" value="3l" />
+                    </Picker>
+                  )
+                }
+                
+            </View>
+            <View style={{flexDirection:"row", justifyContent:'space-evenly',marginTop:10}}>
+      {secondPicker && pickerValue === 'tef'&& (
+
+            <Picker
+            style={{width:160, backgroundColor:'white'}}
+              selectedValue={speaking}
+              onValueChange={(itemValue, itemIndex) => {
+                setSpeaking(itemValue)
+                handleAddPoint(itemValue)
+              }}>
+             <Picker.Item label="Reading" value="0"/>
+          <Picker.Item label="393-450" value="10-12"/>
+          <Picker.Item label="371-392" value="9"/>
+          <Picker.Item label="349-370" value="8" />
+          <Picker.Item label="310-348" value="7" />
+          <Picker.Item label="271-309" value="6" />
+          <Picker.Item label="226-270" value="5" />
+          <Picker.Item label="181-225" value="4" />
+          <Picker.Item label="0-180" value="3" />
+            </Picker>
+            
+          )}
+
+          {
+            secondPicker && pickerValue === 'tef'&& (
+                    <Picker
+                    style={{width:160, backgroundColor:'white'}}
+                      selectedValue={listening}
+                      onValueChange={(itemValue, itemIndex) => {
+                        setListening(itemValue)
+                        handleAddPoint(itemValue)
+                      }}>
+          <Picker.Item label="Writing" value="0l"/>
+          <Picker.Item label="393-450" value="10-12l"/>
+          <Picker.Item label="371-392" value="9l"/>
+          <Picker.Item label="349-370" value="8l" />
+          <Picker.Item label="310-348" value="7l" />
+          <Picker.Item label="271-309" value="6l" />
+          <Picker.Item label="226-270" value="5l" />
+          <Picker.Item label="181-225" value="4l" />
+          <Picker.Item label="0-180" value="3l" />
+                    </Picker>
+                  )
+                }
+                
+            </View>
+
+            <TouchableOpacity onPress={()=>navigation.navigate('Work')}>
                 <View style={{backgroundColor:'red', width:90, padding:10, alignSelf:'center', marginTop:20, borderRadius:10}}>
                     <Text style={{fontSize:17,textAlign:'center', color:'white'}}>Next</Text>
                 </View>
             </TouchableOpacity>
+            </ImageBackground>
     </SafeAreaView>
   );
 };

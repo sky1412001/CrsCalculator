@@ -2,10 +2,10 @@ import React,{useState} from "react";
 import { SafeAreaView ,ImageBackground, View,Text, Pressable,Image, TouchableOpacity} from "react-native";
 import {Picker} from '@react-native-picker/picker';
 import {useSelector, useDispatch} from 'react-redux';
-import {addPoints, refreshState} from './../../actions/pointsActions';
+import {addPoints, refreshState} from '../../actions/pointsActions';
 
 const refresh = require('../../assets/rets.png');
-const Celpip = ({navigation}) =>{
+const Tefs = ({navigation}) =>{
   const [pickerValue, setPickerValue] = useState('');
   const [listen, setListen] = useState('');
   const[reading, setReading] = useState('');
@@ -13,7 +13,6 @@ const Celpip = ({navigation}) =>{
   const points = useSelector(state => state.points.points);
   const dispatch = useDispatch();
 
-  
   const handleAddPoints = itemValue => {
     if (itemValue === '0') {
       dispatch(addPoints(0));
@@ -32,7 +31,6 @@ const Celpip = ({navigation}) =>{
   const handleAddPoint = () => {
     dispatch(refreshState());
   };
-
     return(
         <SafeAreaView style={{flex:1}}>
           <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
@@ -53,12 +51,12 @@ const Celpip = ({navigation}) =>{
             }}>
             CRS – A. Core
           </Text>
-          <TouchableOpacity onPress={handleAddPoint}>
+          <Pressable onPress={handleAddPoint}>
             <Image
               source={refresh}
               style={{width: 30, height: 30, marginTop: 10}}
             />
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <View
           style={{
@@ -89,7 +87,7 @@ const Celpip = ({navigation}) =>{
         </View>
       </ImageBackground>
       <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -111,18 +109,18 @@ const Celpip = ({navigation}) =>{
           }}
          >
           <Picker.Item label="Speaking" value="0"/>
-          <Picker.Item label="10-12" value="10-12"/>
-          <Picker.Item label="9" value="9"/>
-          <Picker.Item label="8" value="8" />
-          <Picker.Item label="7" value="7" />
-          <Picker.Item label="6" value="6" />
-          <Picker.Item label="5" value="5" />
-          <Picker.Item label="4" value="4" />
-          <Picker.Item label="m, 0-3" value="3"/>
+          <Picker.Item label="393-450" value="10-12"/>
+          <Picker.Item label="371-392" value="9"/>
+          <Picker.Item label="349-370" value="8" />
+          <Picker.Item label="310-348" value="7" />
+          <Picker.Item label="271-309" value="6" />
+          <Picker.Item label="226-270" value="5" />
+          <Picker.Item label="181-225" value="4" />
+          <Picker.Item label="0-180" value="3" />
         </Picker>
       </View>
       <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -143,19 +141,19 @@ const Celpip = ({navigation}) =>{
         handleAddPoints(itemValue);
           }}
          >
-          <Picker.Item label="Listening" value="0l"/>
-          <Picker.Item label="10-12" value="1l"/>
-          <Picker.Item label="9" value="2l"/>
-          <Picker.Item label="8" value="3l" />
-          <Picker.Item label="7" value="4l" />
-          <Picker.Item label="6" value="5l" />
-          <Picker.Item label="5" value="6l" />
-          <Picker.Item label="4" value="7l" />
-          <Picker.Item label="m, 0-3" value="8l" />
+       <Picker.Item label="Listening" value="0l"/>
+          <Picker.Item label="393-450" value="10-12l"/>
+          <Picker.Item label="371-392" value="9l"/>
+          <Picker.Item label="349-370" value="8l" />
+          <Picker.Item label="310-348" value="7l" />
+          <Picker.Item label="271-309" value="6l" />
+          <Picker.Item label="226-270" value="5l" />
+          <Picker.Item label="181-225" value="4l" />
+          <Picker.Item label="0-180" value="3l" />
         </Picker>
       </View>
       <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -177,14 +175,14 @@ const Celpip = ({navigation}) =>{
           }}
          >
           <Picker.Item label="Reading" value="0r"/>
-          <Picker.Item label="10-12" value="1r"/>
-          <Picker.Item label="9" value="2r"/>
-          <Picker.Item label="8" value="3r" />
-          <Picker.Item label="7" value="4r" />
-          <Picker.Item label="6" value="5r" />
-          <Picker.Item label="5" value="6r" />
-          <Picker.Item label="4" value="7r" />
-          <Picker.Item label="m, 0-3" value="8r"/>
+          <Picker.Item label="393-450" value="10-12r"/>
+          <Picker.Item label="371-392" value="9r"/>
+          <Picker.Item label="349-370" value="8r" />
+          <Picker.Item label="310-348" value="7r" />
+          <Picker.Item label="271-309" value="6r" />
+          <Picker.Item label="226-270" value="5r" />
+          <Picker.Item label="181-225" value="4r" />
+          <Picker.Item label="0-180" value="3r" />
         </Picker>
       </View>
 <View  style={{
@@ -209,22 +207,20 @@ const Celpip = ({navigation}) =>{
         handleAddPoints(itemValue);
           }}
          >
-          <Picker.Item label="Writing" value="0r"/>
-          <Picker.Item label="10-12" value="1r"/>
-          <Picker.Item label="9" value="2r"/>
-          <Picker.Item label="8" value="3r" />
-          <Picker.Item label="7" value="4r" />
-          <Picker.Item label="6" value="5r" />
-          <Picker.Item label="5" value="6r" />
-          <Picker.Item label="4" value="7r" />
-          <Picker.Item label="m, 0-3" value="8r" />
+      <Picker.Item label="Writing" value="0w"/>
+          <Picker.Item label="393-450" value="10-12w"/>
+          <Picker.Item label="371-392" value="9w"/>
+          <Picker.Item label="349-370" value="8w" />
+          <Picker.Item label="310-348" value="7w" />
+          <Picker.Item label="271-309" value="6w" />
+          <Picker.Item label="226-270" value="5w" />
+          <Picker.Item label="181-225" value="4w" />
+          <Picker.Item label="0-180" value="3w" />
         </Picker>
       </View>
-     <TouchableOpacity disabled={pickerValue === "" || listen === "" || writing === "" || reading === "" } onPress={()=>navigation.navigate('Second')}>
+      <TouchableOpacity onPress={()=>navigation.navigate('Second')}>
       <View style={{width:80, backgroundColor:'red', padding:10, alignSelf:'center', borderRadius:10}}><Text style={{color:'white',textAlign:'center'}}>Next</Text></View>
-
-     </TouchableOpacity>
-
+      </TouchableOpacity>
 
 </ImageBackground>
         </SafeAreaView>
@@ -233,4 +229,4 @@ const Celpip = ({navigation}) =>{
     )
 }
 
-export default Celpip;
+export default Tefs;

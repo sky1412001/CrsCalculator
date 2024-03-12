@@ -87,7 +87,7 @@ const Tef = ({navigation}) =>{
         </View>
       </ImageBackground>
       <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -120,7 +120,7 @@ const Tef = ({navigation}) =>{
         </Picker>
       </View>
       <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -153,7 +153,7 @@ const Tef = ({navigation}) =>{
         </Picker>
       </View>
       <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -186,7 +186,7 @@ const Tef = ({navigation}) =>{
         </Picker>
       </View>
 <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -218,7 +218,7 @@ const Tef = ({navigation}) =>{
           <Picker.Item label="0-180" value="3w" />
         </Picker>
       </View>
-      <TouchableOpacity onPress={()=>navigation.navigate('Second')}>
+      <TouchableOpacity onPress={()=>navigation.navigate('Seconds')}>
       <View style={{width:80, backgroundColor:'red', padding:10, alignSelf:'center', borderRadius:10}}><Text style={{color:'white',textAlign:'center'}}>Next</Text></View>
       </TouchableOpacity>
 

@@ -1,9 +1,21 @@
 import React,{useState} from "react";
 import { Image, SafeAreaView, StatusBar, StyleSheet, Text, TouchableOpacity, View, Modal } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 const canada = require('../assets/can.jpg')
- const Home = ({navigation}) =>{
+
+ const Home = () =>{
+  const navigation = useNavigation()
     const [modalVisible, setModalVisible] = useState(false);
-    const [showModal, setSetShowModal] = useState(false);
+
+
+    const goMarry= () =>{
+      navigation.navigate('Age')
+    }
+
+    const goSingle= () =>{
+      navigation.navigate('Ages')
+    }
     return(
         <SafeAreaView style={{backgroundColor:"white", flex:1}}>
             <StatusBar backgroundColor={'red'} />
@@ -12,13 +24,12 @@ const canada = require('../assets/can.jpg')
                 <Text style={{fontSize:16, fontFamily:'Raleway-ExtraBold', color:'black'}}>Comprehensive Ranking System</Text>
             </View>
             <View style={styles.button}>
-                <TouchableOpacity onPress={()=>setModalVisible(true)
-                }>
+                <TouchableOpacity onPress={goMarry}>
                 <View style={styles.btn}>
                     <Text style={{color:'white', fontFamily:'Raleway-ExtraBold'}}>Married</Text>
                 </View>
                 </TouchableOpacity> 
-               <TouchableOpacity onPress={()=>navigation.navigate('Sub')}>
+               <TouchableOpacity onPress={goSingle}>
                <View style={styles.btn}>
                     <Text style={{color:'white', fontFamily:'Raleway-ExtraBold'}}>Single</Text>
                 </View>

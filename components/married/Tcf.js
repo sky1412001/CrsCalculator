@@ -43,10 +43,10 @@ const Tcf = ({navigation}) =>{
             CRS – A. Core
           </Text>
           <Pressable onPress={handleAddPoint}>
-            <Image
+              <Image
               source={refresh}
               style={{width: 30, height: 30, marginTop: 10}}
-            />
+              />
           </Pressable>
         </View>
         <View
@@ -78,7 +78,7 @@ const Tcf = ({navigation}) =>{
         </View>
       </ImageBackground>
       <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -111,7 +111,7 @@ const Tcf = ({navigation}) =>{
         </Picker>
       </View>
       <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -144,7 +144,7 @@ const Tcf = ({navigation}) =>{
         </Picker>
       </View>
       <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -177,7 +177,7 @@ const Tcf = ({navigation}) =>{
         </Picker>
       </View>
 <View  style={{
-          borderRadius: 20,
+          borderRadius: 10,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',

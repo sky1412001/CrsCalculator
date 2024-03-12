@@ -2,8 +2,8 @@ import { ADD_POINTS, TOGGLE_ADD_POINTS, REFRESH_STATE, SELECT_OPTION } from '../
 
 const initialState = {
   points: 0,
-  addPointsEnabled: true, // Assuming it's enabled by default
-  selectedOption: null, // Assuming there's a selected option
+  addPointsEnabled: true,
+  selectedOption: null,
 };
 
 const pointsReducer = (state = initialState, action) => {
@@ -14,21 +14,25 @@ const pointsReducer = (state = initialState, action) => {
           ...state,
           points: state.points + action.payload,
         };
-      } else {
-        return state; 
       }
+      // Return state as is if addPointsEnabled is false
+      return state;
+
     case TOGGLE_ADD_POINTS:
       return {
         ...state,
         addPointsEnabled: !state.addPointsEnabled,
       };
+
     case SELECT_OPTION:
       return {
         ...state,
         selectedOption: action.payload,
       };
+
     case REFRESH_STATE:
       return initialState;
+
     default:
       return state;
   }

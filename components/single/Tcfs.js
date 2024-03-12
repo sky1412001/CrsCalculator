@@ -5,7 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {addPoints, refreshState} from './../../actions/pointsActions';
 
 const refresh = require('../../assets/rets.png');
-const Celpip = ({navigation}) =>{
+const Tcfs = ({navigation}) =>{
   const [pickerValue, setPickerValue] = useState('');
   const [listen, setListen] = useState('');
   const[reading, setReading] = useState('');
@@ -13,21 +13,10 @@ const Celpip = ({navigation}) =>{
   const points = useSelector(state => state.points.points);
   const dispatch = useDispatch();
 
-  
   const handleAddPoints = itemValue => {
     if (itemValue === '0') {
       dispatch(addPoints(0));
-    } else if (itemValue === '1') {
-      navigation.navigate('Celpip')
-    } else if (itemValue === '19') {
-      dispatch(addPoints(46));
-    } else if (itemValue === '20') {
-      dispatch(addPoints(56));
-    } else if (itemValue === '30') {
-      dispatch(addPoints(63));
-    } else if (itemValue === '31') {
-      dispatch(addPoints(70));
-    } 
+    }
   }
   const handleAddPoint = () => {
     dispatch(refreshState());
@@ -53,12 +42,12 @@ const Celpip = ({navigation}) =>{
             }}>
             CRS – A. Core
           </Text>
-          <TouchableOpacity onPress={handleAddPoint}>
+          <Pressable onPress={handleAddPoint}>
             <Image
               source={refresh}
               style={{width: 30, height: 30, marginTop: 10}}
             />
-          </TouchableOpacity>
+          </Pressable>
         </View>
         <View
           style={{
@@ -111,14 +100,14 @@ const Celpip = ({navigation}) =>{
           }}
          >
           <Picker.Item label="Speaking" value="0"/>
-          <Picker.Item label="10-12" value="10-12"/>
-          <Picker.Item label="9" value="9"/>
-          <Picker.Item label="8" value="8" />
-          <Picker.Item label="7" value="7" />
-          <Picker.Item label="6" value="6" />
-          <Picker.Item label="5" value="5" />
-          <Picker.Item label="4" value="4" />
-          <Picker.Item label="m, 0-3" value="3"/>
+          <Picker.Item label="16-20" value="10-12"/>
+          <Picker.Item label="14-15" value="9"/>
+          <Picker.Item label="12-13" value="8" />
+          <Picker.Item label="10-11" value="7" />
+          <Picker.Item label="7-9" value="6" />
+          <Picker.Item label="6" value="5" />
+          <Picker.Item label="4-5" value="4" />
+          <Picker.Item label="0-3" value="3" />
         </Picker>
       </View>
       <View  style={{
@@ -143,15 +132,15 @@ const Celpip = ({navigation}) =>{
         handleAddPoints(itemValue);
           }}
          >
-          <Picker.Item label="Listening" value="0l"/>
-          <Picker.Item label="10-12" value="1l"/>
-          <Picker.Item label="9" value="2l"/>
-          <Picker.Item label="8" value="3l" />
-          <Picker.Item label="7" value="4l" />
+        <Picker.Item label="Listening" value="0l"/>
+          <Picker.Item label="16-20" value="10-12l"/>
+          <Picker.Item label="14-15" value="9l"/>
+          <Picker.Item label="12-13" value="8l" />
+          <Picker.Item label="10-11" value="7l" />
+          <Picker.Item label="7-9" value="6l" />
           <Picker.Item label="6" value="5l" />
-          <Picker.Item label="5" value="6l" />
-          <Picker.Item label="4" value="7l" />
-          <Picker.Item label="m, 0-3" value="8l" />
+          <Picker.Item label="4-5" value="4l" />
+          <Picker.Item label="0-3" value="3l" />  
         </Picker>
       </View>
       <View  style={{
@@ -176,19 +165,19 @@ const Celpip = ({navigation}) =>{
         handleAddPoints(itemValue);
           }}
          >
-          <Picker.Item label="Reading" value="0r"/>
-          <Picker.Item label="10-12" value="1r"/>
-          <Picker.Item label="9" value="2r"/>
-          <Picker.Item label="8" value="3r" />
-          <Picker.Item label="7" value="4r" />
-          <Picker.Item label="6" value="5r" />
-          <Picker.Item label="5" value="6r" />
-          <Picker.Item label="4" value="7r" />
-          <Picker.Item label="m, 0-3" value="8r"/>
+        <Picker.Item label="Reading" value="0l"/>
+          <Picker.Item label="16-20" value="10-12l"/>
+          <Picker.Item label="14-15" value="9l"/>
+          <Picker.Item label="12-13" value="8l" />
+          <Picker.Item label="10-11" value="7l" />
+          <Picker.Item label="7-9" value="6l" />
+          <Picker.Item label="6" value="5l" />
+          <Picker.Item label="4-5" value="4l" />
+          <Picker.Item label="0-3" value="3l" />
         </Picker>
       </View>
 <View  style={{
-          borderRadius: 10,
+          borderRadius: 20,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
@@ -209,28 +198,23 @@ const Celpip = ({navigation}) =>{
         handleAddPoints(itemValue);
           }}
          >
-          <Picker.Item label="Writing" value="0r"/>
-          <Picker.Item label="10-12" value="1r"/>
-          <Picker.Item label="9" value="2r"/>
-          <Picker.Item label="8" value="3r" />
-          <Picker.Item label="7" value="4r" />
-          <Picker.Item label="6" value="5r" />
-          <Picker.Item label="5" value="6r" />
-          <Picker.Item label="4" value="7r" />
-          <Picker.Item label="m, 0-3" value="8r" />
+           <Picker.Item label="Speaking" value="0w"/>
+          <Picker.Item label="16-20" value="10-12w"/>
+          <Picker.Item label="14-15" value="9w"/>
+          <Picker.Item label="12-13" value="8w" />
+          <Picker.Item label="7-9" value="6w" />
+          <Picker.Item label="6" value="5w" />
+          <Picker.Item label="4-5" value="4w" />
+          <Picker.Item label="0-3" value="3w" />
         </Picker>
       </View>
-     <TouchableOpacity disabled={pickerValue === "" || listen === "" || writing === "" || reading === "" } onPress={()=>navigation.navigate('Second')}>
+      <TouchableOpacity onPress={()=>navigation.navigate('Seconds')}>
+
       <View style={{width:80, backgroundColor:'red', padding:10, alignSelf:'center', borderRadius:10}}><Text style={{color:'white',textAlign:'center'}}>Next</Text></View>
-
-     </TouchableOpacity>
-
-
-</ImageBackground>
+      </TouchableOpacity>
+    </ImageBackground>
         </SafeAreaView>
-    
-
     )
 }
 
-export default Celpip;
+export default Tcfs;

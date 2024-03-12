@@ -1,13 +1,12 @@
 import React,{useState} from "react";
 import {Image,Modal, SafeAreaView, ScrollView, Text, TouchableOpacity, View,Pressable, StatusBar, StyleSheet, ImageBackground} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import {addPoints, refreshState} from './../../actions/pointsActions';
+import {refreshState} from './../../actions/pointsActions';
 import {Picker} from '@react-native-picker/picker';
 
 const refresh = require('../../assets/rets.png')
-const Work =({navigation}) => {
+const Works =({navigation}) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [showModal, setSetShowModal] = useState(false);
   const [showme, setShowMe] = useState(false)
   const [showthis, setShowThis] = useState(false)
    const [pickerValue, setPickerValue] = useState('');
@@ -15,8 +14,7 @@ const Work =({navigation}) => {
     const points = useSelector((state) => state.points.points);
     const dispatch = useDispatch();
   
-      const handleAddPoints=itemValue =>{
-         
+      const handleAddPoints=itemValue =>{  
       }
       const handleAddPoint=()=>{
          dispatch(refreshState())
@@ -90,34 +88,6 @@ const Work =({navigation}) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}> Do You Have A Certificate Of Qualification From A Canadian Province, Territory Or Federal Body?</Text>
             <View style={{ flexDirection: 'row', justifyContent: "space-between", gap: 40 }}>
-              <TouchableOpacity onPress={()=>setSetShowModal(true)}>
-
-                <View style={{ backgroundColor: 'red', width: 70, padding: 10, borderRadius: 10 }}>
-                  <Text style={{ textAlign: 'center', color: 'white' }}>NO</Text>
-                </View>
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={()=>setSetShowModal(true)}>
-                <View style={{ backgroundColor: 'green', width: 70, padding: 10, borderRadius: 10 }}>
-                  <Text style={{ textAlign: 'center', color: 'white' }}>Yes</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-   
-      </Modal>
-      <Modal
-        animationType="fade"
-        transparent={true}
-        visible={showModal}
-        onRequestClose={() => {
-          setSetShowModal(false);
-        }}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Will Your Spouse Or Common-Law Partner Come With You To Canada?</Text>
-            <View style={{ flexDirection: 'row', justifyContent: "space-between", gap: 40 }}>
               <TouchableOpacity onPress={()=>setShowMe(true)}>
 
                 <View style={{ backgroundColor: 'red', width: 70, padding: 10, borderRadius: 10 }}>
@@ -133,9 +103,7 @@ const Work =({navigation}) => {
             </View>
           </View>
         </View>
-   
       </Modal>
-
       <Modal
         animationType="slide"
         transparent={true}
@@ -153,7 +121,6 @@ const Work =({navigation}) => {
                   <Text style={{ textAlign: 'center', color: 'white' }}>NO</Text>
                 </View>
               </TouchableOpacity>
-
               <TouchableOpacity onPress={()=>setShowThis(true)} >
                 <View style={{ backgroundColor: 'green', width: 70, padding: 10, borderRadius: 10 }}>
                   <Text style={{ textAlign: 'center', color: 'white' }}>Yes</Text>
@@ -166,7 +133,6 @@ const Work =({navigation}) => {
       </Modal>
       <Modal
       statusBarTranslucent={true}
-      style={{backgroundColor:"red"}}
         animationType="slide"
         transparent={false}
         visible={showthis}
@@ -179,9 +145,7 @@ const Work =({navigation}) => {
             <View style={{ flexDirection: 'row', justifyContent: "space-between", gap: 40 }}>
               <View style={{borderColor:'red',width:70, height:70, backgroundColor:"white", borderRadius:50, alignItems:"center", justifyContent:'center', borderWidth:2}}>
                 <Text style={{fontSize:20, fontWeight:700, color:'black'}}>{points}</Text>
-
               </View>
-             
             </View>
           </View>
              <Pressable onPress={handleAddPoint}>
@@ -190,14 +154,12 @@ const Work =({navigation}) => {
              </View>
              </Pressable>
         </View>
-   
-      </Modal>
-      
+      </Modal>   
     </ImageBackground>
 </SafeAreaView>
     )
 }
-export default Work;
+export default Works;
 const styles = StyleSheet.create({
   headerContainer: {
     height: 140,

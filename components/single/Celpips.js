@@ -5,7 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {addPoints, refreshState} from './../../actions/pointsActions';
 
 const refresh = require('../../assets/rets.png');
-const Celpip = ({navigation}) =>{
+const Celpips = ({navigation}) =>{
   const [pickerValue, setPickerValue] = useState('');
   const [listen, setListen] = useState('');
   const[reading, setReading] = useState('');
@@ -220,7 +220,7 @@ const Celpip = ({navigation}) =>{
           <Picker.Item label="m, 0-3" value="8r" />
         </Picker>
       </View>
-     <TouchableOpacity disabled={pickerValue === "" || listen === "" || writing === "" || reading === "" } onPress={()=>navigation.navigate('Second')}>
+     <TouchableOpacity onPress={()=>navigation.navigate('Seconds')}>
       <View style={{width:80, backgroundColor:'red', padding:10, alignSelf:'center', borderRadius:10}}><Text style={{color:'white',textAlign:'center'}}>Next</Text></View>
 
      </TouchableOpacity>
@@ -233,4 +233,4 @@ const Celpip = ({navigation}) =>{
     )
 }
 
-export default Celpip;
+export default Celpips;

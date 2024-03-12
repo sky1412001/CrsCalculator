@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { SafeAreaView, Text, Pressable, View, Image, ImageBackground, StyleSheet, SectionList } from 'react-native';
+import { SafeAreaView, Text, Pressable, View, Image, ImageBackground, StyleSheet } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useSelector, useDispatch } from 'react-redux';
 import { addPoints, refreshState } from './../../actions/pointsActions';
 
 const refresh = require('../../assets/rets.png');
 
-const Exp = ({ navigation }) => {
+const Exps = ({ navigation }) => {
   const [pickerValue, setPickerValue] = useState('');
   const points = useSelector(state => state.points.points);
   const dispatch = useDispatch();
@@ -14,10 +14,10 @@ const Exp = ({ navigation }) => {
   const handleAddPoints = (itemValue) => {
     const pointsMap = {
       '0': 0,
-      '1': () => navigation.navigate('Celpip'),
-      '2': () => navigation.navigate('Ielts'),
-      '3': () => navigation.navigate('Tef'),
-      '4': () => navigation.navigate('Tcf')
+      '1': () => navigation.navigate('Celpips'),
+      '2': () => navigation.navigate('Ieltss'),
+      '3': () => navigation.navigate('Tefs'),
+      '4': () => navigation.navigate('Tcfs')
     };
     const selectedPoints = pointsMap[itemValue];
     if (selectedPoints !== undefined) {
@@ -68,11 +68,11 @@ const Exp = ({ navigation }) => {
           <Picker.Item label="TCF Canada" value="4" />
         </Picker>
       </View>
-     
       </ImageBackground>
     </SafeAreaView>
   );
 };
+
 const styles = StyleSheet.create({
   headerContainer: {
     height: 140,
@@ -94,12 +94,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   pointsContainer: {
-    borderWidth:2,
     width: 90,
     height: 90,
     backgroundColor: 'white',
     borderRadius: 50,
     alignSelf: 'center',
+    borderWidth: 2,
     borderColor: 'red',
     alignItems: 'center',
     justifyContent: 'center',
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   languageText: {
     textAlign: 'center',
-    fontSize: 13,
+    fontSize: 18,
     fontFamily: 'Raleway-ExtraBold',
     color: 'red',
   },
@@ -138,4 +138,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Exp;
+export default Exps;

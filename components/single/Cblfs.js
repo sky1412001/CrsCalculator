@@ -17,7 +17,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {addPoints, refreshState} from './../../actions/pointsActions';
 import {Picker} from '@react-native-picker/picker';
 const refresh = require('../../assets/rets.png');
-const Cblf = ({navigation}) => {
+const Cblfs = ({navigation}) => {
   const [pickerValue, setPickerValue] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
    
@@ -39,10 +39,6 @@ const Cblf = ({navigation}) => {
   const handleAddPoint = () => {
     dispatch(refreshState());
   };
-  const goerror =()=>{
-    navigation.navigate('Error')
-
-  }
   return (
     <SafeAreaView style={{flex:1}}>
       <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
@@ -109,6 +105,7 @@ const Cblf = ({navigation}) => {
           margin: 20,
           backgroundColor: 'white',
           elevation: 6,
+          borderColor: 'red',
         }}>
         <Picker
           style={{
@@ -147,7 +144,6 @@ const Cblf = ({navigation}) => {
         </View>
       </TouchableOpacity>
       <TouchableOpacity
-      disabled={pickerValue === "" }
         onPress={() => setModalVisible(true)}>
         <View
           style={{
@@ -173,12 +169,12 @@ const Cblf = ({navigation}) => {
           <View style={styles.modalView}>
             <Text style={styles.modalText}>Are Your Test Result less than Two Years Old ?</Text>
            <View style={{flexDirection:'row', justifyContent:"space-between", gap:40}}>
-            <TouchableOpacity onPress={goerror}>
+            <TouchableOpacity onPress={()=>navigation.navigate("Error")}>
             <View style={{backgroundColor:'red', width:70, padding:10, borderRadius:10}}>
               <Text style={{textAlign:'center', color:'white'}}>NO</Text>
             </View>
             </TouchableOpacity>
-            <TouchableOpacity onPress={()=>navigation.navigate('Exp')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('Exps')}>
             <View style={{backgroundColor:'green', width:70, padding:10, borderRadius:10}}>
               <Text style={{textAlign:'center', color:'white'}}>Yes</Text>
             </View>
@@ -191,7 +187,7 @@ const Cblf = ({navigation}) => {
     </SafeAreaView>
   );
 };
-export default Cblf;
+export default Cblfs;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -14,7 +14,7 @@ import {addPoints, refreshState} from './../../actions/pointsActions';
 import { Tcf } from '.';
 
 const refresh = require('../../assets/rets.png');
-const Second = ({navigation}) => {
+const Seconds = ({navigation}) => {
   const [pickerValue, setPickerValue] = useState('');
   const [showPicker, setShowPicker] = useState(false);
   const[listening, setListening] = useState('')
@@ -32,6 +32,8 @@ const Second = ({navigation}) => {
       setShowPicker(true);
     } else if (itemValue === 'tef') {
       setSecondPicker(true)
+    }else {
+        navigation.navigate('Works')
     }
   };
   const handleAddPoint = () => {
@@ -103,6 +105,8 @@ const Second = ({navigation}) => {
           margin: 20,
           backgroundColor: 'white',
           elevation: 6,
+          borderWidth: 2,
+          borderColor: 'red',
         }}>
         <Picker
           padding={20}
@@ -150,6 +154,8 @@ const Second = ({navigation}) => {
 
           {
             showPicker && pickerValue === 'tcf'&& (
+             
+        
                     <Picker
                     style={{width:160, backgroundColor:'white', color:'black', elevation:10}}
                       selectedValue={listening}
@@ -169,6 +175,7 @@ const Second = ({navigation}) => {
                     </Picker>
                   )
                 }
+                
             </View>
             <View style={{flexDirection:'row', justifyContent:'space-evenly', marginTop:15}}>
                 {
@@ -214,8 +221,10 @@ const Second = ({navigation}) => {
                     )
                 }
             </View>
+
             <View style={{flexDirection:"row", justifyContent:'space-evenly'}}>
       {secondPicker && pickerValue === 'tef'&& (
+
             <Picker
             style={{width:160, backgroundColor:'white', color:'black', elevation:10}}
               selectedValue={speaking}
@@ -232,8 +241,10 @@ const Second = ({navigation}) => {
           <Picker.Item label="226-270" value="5" />
           <Picker.Item label="181-225" value="4" />
           <Picker.Item label="0-180" value="3" />
-            </Picker> 
+            </Picker>
+            
           )}
+
           {
             secondPicker && pickerValue === 'tef'&& (
                     <Picker
@@ -276,6 +287,7 @@ const Second = ({navigation}) => {
           <Picker.Item label="181-225" value="4" />
           <Picker.Item label="0-180" value="3" />
             </Picker>
+            
           )}
           {
             secondPicker && pickerValue === 'tef'&& (
@@ -299,7 +311,7 @@ const Second = ({navigation}) => {
                   )
                 }
             </View>
-            <TouchableOpacity onPress={()=>navigation.navigate('Work')}>
+            <TouchableOpacity onPress={()=>navigation.navigate('Works')}>
                 <View style={{backgroundColor:'red', width:90, padding:10, alignSelf:'center', marginTop:20, borderRadius:10}}>
                     <Text style={{fontSize:17,textAlign:'center', color:'white'}}>Next</Text>
                 </View>
@@ -308,4 +320,5 @@ const Second = ({navigation}) => {
     </SafeAreaView>
   );
 };
-export default Second;
+
+export default Seconds;

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   Pressable,
@@ -8,69 +8,44 @@ import {
   StatusBar,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
-import {useSelector, useDispatch} from 'react-redux';
-import {addPoints, refreshState} from './../../actions/pointsActions';
+import { Picker } from '@react-native-picker/picker';
+import { useSelector, useDispatch } from 'react-redux';
+import { addPoints, refreshState } from './../../actions/pointsActions';
 
 const refresh = require('../../assets/rets.png');
 
-const Age = ({navigation}) => {
+const Age = ({ navigation }) => {
   const [maritalStatus, setMaritalStatus] = useState('');
   const [pickerValue, setPickerValue] = useState('');
   const points = useSelector(state => state.points.points);
   const dispatch = useDispatch();
 
   const marriedPoints = [
-    {label: 'Select your age', value: ''},
-    {label: '0-17', value: '17', points: 0},
-    {label: '18', value: '18', points: 90},
-    {label: '19', value: '19', points: 95},
-    {label: '20-29', value: '20', points: 100},
-    {label: '30', value: '30', points: 95},
-    {label: '31', value: '31', points: 90},
-    {label: '32', value: '32', points: 85},
-    {label: '33', value: '33', points: 80},
-    {label: '34', value: '34', points: 75},
-    {label: '35', value: '35', points: 70},
-    {label: '36', value: '36', points: 65},
-    {label: '37', value: '37', points: 60},
-    {label: '38', value: '38', points: 55},
-    {label: '39', value: '39', points: 50},
-    {label: '40', value: '40', poinst: 45},
-    {label: '41', value: '41', points: 40},
-    {label: '42', value: '42', points: 42},
-    {label: '43', value: '43', points: 43},
-    {label: '44', value: '44', points: 44},
-    {label: '45', value: '45', points: 0},
-  ];
-
-  const singlePoints = [
-    {label: 'Select your age', value: ''},
-    {label: '0-17', value: '17s', points: 0},
-    {label: '18', value: '18s', points: 99},
-    {label: '19', value: '19s', points: 105},
-    {label: '20-29', value: '20s', points: 110},
-    {label: '30', value: '30s', points: 105},
-    {label: '31', value: '31s', points: 99},
-    {label: '32', value: '32s', points: 94},
-    {label: '33', value: '33s', points: 88},
-    {label: '34', value: '34s', points: 83},
-    {label: '35', value: '35s', points: 77},
-    {label: '36', value: '36s', points: 72},
-    {label: '37', value: '37s', points: 66},
-    {label: '38', value: '38s', points: 61},
-    {label: '39', value: '39s', points: 55},
-    {label: '40', value: '40s', poinst: 50},
-    {label: '41', value: '41s', points: 45},
-    {label: '42', value: '42s', points: 35},
-    {label: '43', value: '43s', points: 25},
-    {label: '44', value: '44s', points: 15},
-    {label: '45', value: '45s', points: 0},
+    { label: 'Select your age', value: '' },
+    { label: '0-17', value: '17', points: 0 },
+    { label: '18', value: '18', points: 90 },
+    { label: '19', value: '19', points: 95 },
+    { label: '20-29', value: '20', points: 100 },
+    { label: '30', value: '30', points: 95 },
+    { label: '31', value: '31', points: 90 },
+    { label: '32', value: '32', points: 85 },
+    { label: '33', value: '33', points: 80 },
+    { label: '34', value: '34', points: 75 },
+    { label: '35', value: '35', points: 70 },
+    { label: '36', value: '36', points: 65 },
+    { label: '37', value: '37', points: 60 },
+    { label: '38', value: '38', points: 55 },
+    { label: '39', value: '39', points: 50 },
+    { label: '40', value: '40', points: 45 },
+    { label: '41', value: '41', points: 40 },
+    { label: '42', value: '42', points: 42 },
+    { label: '43', value: '43', points: 43 },
+    { label: '44', value: '44', points: 44 },
+    { label: '45', value: '45', points: 0 },
   ];
 
   const handleAddPoints = itemValue => {
-    const selectedPointsArray = maritalStatus === 'single' ? singlePoints : marriedPoints;
-    const selectedAge = selectedPointsArray.find(age => age.value === itemValue);
+    const selectedAge = marriedPoints.find(age => age.value === itemValue);
     const pointsToAdd = selectedAge ? selectedAge.points : 0;
     dispatch(addPoints(pointsToAdd));
   };
@@ -80,169 +55,132 @@ const Age = ({navigation}) => {
   };
 
   return (
-    <View style={{flex: 1}}>
-      <ImageBackground source={require('../../assets/backg.png')} style={{flex:1}}>
-      <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} />
-      <ImageBackground
-        source={require('../../assets/header.png')}
-        style={{height: 140, elevation: 10}}>
-              <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            padding: 20,
-          }}>
-          <Text
+    <View style={{ flex: 1 }}>
+      <ImageBackground source={require('../../assets/backg.png')} style={{ flex: 1 }}>
+        <StatusBar translucent backgroundColor={'rgba(0,0,0,0)'} />
+        <ImageBackground
+          source={require('../../assets/header.png')}
+          style={{ height: 140, elevation: 10 }}>
+          <View
             style={{
-              fontFamily: 'Raleway-ExtraBold',
-              fontSize: 20,
-              color: 'white',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              padding: 20,
             }}>
-            CRS – A. Core
-          </Text>
-          <Pressable onPress={handleAddPoint}>
-            <Image
-              source={refresh}
-              style={{width: 30, height: 30, marginTop: 10}}
-            />
-          </Pressable>
-        </View>
-        <View
-          style={{
-            width: 90,
-            height: 90,
-            backgroundColor: 'white',
-            borderRadius: 50,
-            alignSelf: 'center',
-            borderWidth: 2,
-            borderColor: 'red',
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 10,
-          }}>
-          <Text style={{fontSize: 30, color: 'black'}}>{points}</Text>
-        </View>
-        <View>
-          <Text
+            <Text
+              style={{
+                fontFamily: 'Raleway-ExtraBold',
+                fontSize: 20,
+                color: 'white',
+              }}>
+              CRS – A. Core
+            </Text>
+            <Pressable onPress={handleAddPoint}>
+              <Image
+                source={refresh}
+                style={{ width: 30, height: 30, marginTop: 10 }}
+              />
+            </Pressable>
+          </View>
+          <View
             style={{
-              textAlign: 'center',
-              fontSize: 18,
-              fontFamily: 'Raleway-ExtraBold',
-              color: 'red',
-              marginVertical: 20,
+              width: 90,
+              height: 90,
+              backgroundColor: 'white',
+              borderRadius: 50,
+              alignSelf: 'center',
+              borderWidth: 2,
+              borderColor: 'red',
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginTop: 10,
             }}>
-            How old are you ?
-          </Text>
-        </View>
-      </ImageBackground>
+            <Text style={{ fontSize: 30, color: 'black' }}>{points}</Text>
+          </View>
+          <View>
+            <Text
+              style={{
+                textAlign: 'center',
+                fontSize: 18,
+                fontFamily: 'Raleway-ExtraBold',
+                color: 'red',
+                marginVertical: 20,
+              }}>
+              How old are you ?
+            </Text>
+          </View>
+        </ImageBackground>
 
-      <View  style={{
+        <View style={{
           borderRadius: 20,
           height: 60,
           alignItems: 'center',
           justifyContent: 'center',
           marginTop: 100,
           margin: 20,
-          backgroundColor:'white',
-          elevation:6,
-          borderWidth:2,
-          borderColor:'red'
+          backgroundColor: 'white',
+          elevation: 6,
+          borderWidth: 2,
+          borderColor: 'red'
         }}>
-           <Picker
+          <Picker
             style={{ width: 340, height: 40, color: 'black', fontSize: 25, borderRadius: 20 }}
-            selectedValue={maritalStatus}
-            onValueChange={(itemValue, itemIndex) => {
-              setMaritalStatus(itemValue);
+            selectedValue={pickerValue}
+            onValueChange={(itemValue) => {
+              setPickerValue(itemValue);
+              handleAddPoints(itemValue)
             }}
             dropdownIconColor="black"
             placeholders>
-            <Picker.Item label="Select marital status" value="" />
-            <Picker.Item label="Single" value="single" />
-            <Picker.Item label="Married" value="married" />
+            {marriedPoints.map((item, index) => (
+              <Picker.Item key={index} label={item.label} value={item.value} />
+            ))}
           </Picker>
+        </View>
 
-      </View>
-            <Text style={{ textAlign: 'center', fontSize: 18, fontFamily: 'Raleway-ExtraBold', color: 'red' }}>
-              Select your age
-            </Text>
-          {maritalStatus && (
-          <View  style={{
-            borderRadius: 20,
-            height: 60,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 10,
-            margin: 20,
-            backgroundColor:'white',
-            elevation:6,
-            borderWidth:2,
-            borderColor:'red'
-          }}>
-            <Picker
-              style={{ width: 340, height: 40, color: 'black', fontSize: 25, borderRadius: 20 }}
-              selectedValue={pickerValue}
-              onValueChange={(itemValue) => {
-                setPickerValue(itemValue);
-                handleAddPoints(itemValue)
-              }}
-              dropdownIconColor="black"
-              placeholders>
-              {maritalStatus === 'single' ? (
-                singlePoints.map((item, index) => (
-                  <Picker.Item key={index} label={item.label} value={item.value} />
-                ))
-              ) : (
-                marriedPoints.map((item, index) => (
-                  <Picker.Item key={index} label={item.label} value={item.value} />
-                ))
-              )}
-            </Picker>
+        {/* Next button */}
+        <TouchableOpacity
+          disabled={pickerValue === ''}
+          onPress={() => navigation.navigate('Study')}>
+          <View
+            style={{
+              backgroundColor: 'red',
+              width: 80,
+              height: 40,
+              alignSelf: 'center',
+              padding: 10,
+              borderRadius: 10,
+            }}>
+            <Text style={{ textAlign: 'center', color: 'white' }}>Next</Text>
           </View>
-        )}
+        </TouchableOpacity>
 
-      {/* Next button */}
-      <TouchableOpacity
-        disabled={pickerValue === ''}
-        onPress={() => navigation.navigate('Study', {maritalStatus : maritalStatus})}>
+        {/* Additional information */}
         <View
           style={{
-            backgroundColor: 'red',
-            width: 80,
-            height: 40,
-            alignSelf: 'center',
-            padding: 10,
+            justifyContent: 'center',
+            height: 200,
+            paddingHorizontal: 40,
+            backgroundColor: 'white',
+            margin: 15,
+            elevation: 5,
+            padding: 20,
             borderRadius: 10,
           }}>
-          <Text style={{textAlign: 'center', color: 'white'}}>Next</Text>
+          <Text style={{ padding: 10, fontWeight: "700", color: 'black' }}>
+            <Text>
+              Choose the best answer:
+            </Text>
+
+            If you’ve been invited to apply, enter your age on the date you were invited.
+            OR
+            If you plan to complete an Express Entry profile, enter your current age.
+
+            If you’ve been invited to apply, enter your age on the date you were invited.
+            OR
+            If you plan to complete an Express Entry profile, enter your current age.
+          </Text>
         </View>
-      </TouchableOpacity>
-
-      {/* Additional information */}
-      <View
-        style={{
-          justifyContent: 'center',
-          height: 200,
-          paddingHorizontal: 40,
-          backgroundColor: 'white',
-          margin: 15,
-          elevation: 5,
-          padding: 20,
-          borderRadius: 10,
-        }}>
-        <Text style={{padding:10, fontWeight:"700", color:'black'}}>
-       <Text>
-       Choose the best answer:
-        </Text>
-
-If you’ve been invited to apply, enter your age on the date you were invited.
-OR
-If you plan to complete an Express Entry profile, enter your current age.
-
-If you’ve been invited to apply, enter your age on the date you were invited.
-OR
-If you plan to complete an Express Entry profile, enter your current age.
-        </Text>
-      </View>
       </ImageBackground>
     </View>
   );
